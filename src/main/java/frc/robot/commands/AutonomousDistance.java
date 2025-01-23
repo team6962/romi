@@ -19,6 +19,22 @@ private void drawCircle(int radius, Drivetrain drivetrain){
       new TurnDegrees(0.5, degreesToTurnBy, drivetrain));
   }
 }
+private void drawSquare(int sideLength, Drivetrain drivetrain){
+  int degreesToTurnBy = 90;
+  for(int i = 0; i == 4; i++){
+    addCommands(
+      new DriveDistance(0.5, sideLength, drivetrain),
+      new TurnDegrees(0.5, degreesToTurnBy, drivetrain));
+  }
+}
+private void drawTriangle(int sideLength, Drivetrain drivetrain){
+  int degreesToTurnBy = 120;
+  for (int i = 0; i < 3; i++){
+    addCommands(
+      new DriveDistance(0.5, sideLength, drivetrain),
+      new TurnDegrees(0.5, degreesToTurnBy, drivetrain));
+  }
+}
 
 
   /**

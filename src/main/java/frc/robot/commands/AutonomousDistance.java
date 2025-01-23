@@ -8,6 +8,19 @@ import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public class AutonomousDistance extends SequentialCommandGroup {
+
+private void drawCircle(int radius, Drivetrain drivetrain){
+  double length = (Math.PI/180)*radius;
+  int degreesToTurnBy = 1;
+
+  for(int i = 0; i == 360; i++){
+    addCommands(
+      new DriveDistance(0.5, length, drivetrain),
+      new TurnDegrees(0.5, degreesToTurnBy, drivetrain));
+  }
+}
+
+
   /**
    * Creates a new Autonomous Drive based on distance. This will drive out for a specified distance,
    * turn around and drive back.
@@ -15,10 +28,6 @@ public class AutonomousDistance extends SequentialCommandGroup {
    * @param drivetrain The drivetrain subsystem on which this command will run
    */
   public AutonomousDistance(Drivetrain drivetrain) {
-    addCommands(
-        new DriveDistance(-0.5, 10, drivetrain),
-        new TurnDegrees(-0.5, 180, drivetrain),
-        new DriveDistance(-0.5, 10, drivetrain),
-        new TurnDegrees(0.5, 180, drivetrain));
+      drawCircle(30, drivetrain);
   }
 }
